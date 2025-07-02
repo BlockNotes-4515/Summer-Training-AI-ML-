@@ -24,7 +24,7 @@ data.head();
 #Information of the Data Values.
 data.info();
 
-#Convert the Month Column into Text into the DataTime.
+#Convert the Month Column into Text and into the DataTime.
 data["Month"]=pd.to_datetime(data["Month"]);
 data.head();
 
@@ -173,7 +173,7 @@ data.info();
 
 # Remove the first row (assumed to be a header) and reset the index
 data = data.iloc[1:].reset_index(drop=True)
-# Now try converting the 'Month' column to datetime
+# Now try converting the 'Month' column to 'datetime'
 # Handle potential format variations using 'infer_datetime_format'
 data['Month'] = pd.to_datetime(data['Month'], infer_datetime_format=True, errors='coerce')
 # 'errors='coerce'' will set invalid parsing to NaT (Not a Time) which can be handled later
@@ -202,7 +202,7 @@ tempData = tempData.fillna(tempData.mean())  # Or use another method like forwar
 # Check for and remove duplicate dates
 tempData = tempData[~tempData.index.duplicated()] #This line removes duplicate dates
 
-# Ensure the DatetimeIndex is complete for monthly frequency
+# Ensure the Datetime Index is complete for monthly frequency
 tempData = tempData.asfreq('MS') # This line is added to ensure the DatetimeIndex has a monthly frequency
 
 # Now you can set the frequency explicitly
